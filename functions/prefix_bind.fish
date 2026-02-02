@@ -1,13 +1,17 @@
-function prefix_bind \
-  --description "Bind a key to toggle a command-line prefix"
+function prefix_bind
+    # Bind a human-readable key sequence to toggle a prefix
+    # Usage: prefix_bind <symbolic-key> <prefix>
+    # Example: prefix_bind '\c\eP' "proxychains -q"
 
-  set -l key $argv[1]
-  set -l prefix $argv[2]
+    set -l key $argv[1]    # Symbolic key sequence (e.g., \cs, \c\eP)
+    set -l prefix $argv[2] # Command prefix
 
-  if test (count $argv) -ne 2
-    echo "Usage: prefix_bind <key> <prefix>" >&2
-    return 1
-  end
+    # Validate arguments
+    if test (count $argv) -ne 2
+        echo "Usage: prefix_bind <key> <prefix>" >&2
+        return 1
+    end
 
-  bind -M insert $key "__toggle_command_prefix '$prefix'"
+    # Bind in insert mode (while typing commands)
+    bind -M insert $key "__toggle_command_prefix '$prefix'"
 end
