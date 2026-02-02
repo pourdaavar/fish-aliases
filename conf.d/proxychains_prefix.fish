@@ -1,1 +1,1 @@
-with_prefix_bind \e\[80\;2u "proxychains -q"
+bind \cp "__toggle_command_prefix 'proxychains -q'"

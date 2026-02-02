@@ -24,3 +24,5 @@ function with_prefix_bind \
         bind --mode $mode $key_sequence "with_prefix \"$prefix\""
     end
 end
+
+
